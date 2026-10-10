@@ -279,3 +279,26 @@ header .navbar:hover {
     border-color: rgba(120, 190, 255, 0.85);
     box-shadow: 0 0 12px rgba(80, 160, 255, 0.3);
 }
+
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: pageFadeIn 0.35s ease-out;
+}
+
+body.page-fade-out {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}

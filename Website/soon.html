@@ -12,7 +12,7 @@
         <!-- Navigation / Header-->
         <header>
             <nav class=navbar>
-                <a href="#" class="nav-logo">
+                <a href="index.html" class="nav-logo">
                     <h2 class="nav-text">💻 DudeTechs</h2>
                 </a>
                 <ul class="nav-menu">
@@ -58,6 +58,35 @@
                 </div>
             </section>
         </main>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                document.querySelectorAll('a[href]').forEach(link => {
+                    link.addEventListener("click", event => {
+                        const url = new URL(link.href, window.location.href);
+
+                        // Only animate links to pages on this same website
+                        if (
+                            url.origin === window.location.origin &&
+                            url.pathname.endsWith(".html") &&
+                            !event.ctrlKey &&
+                            !event.metaKey &&
+                            !event.shiftKey &&
+                            !event.altKey &&
+                            event.button === 0
+                        ) {
+                            event.preventDefault();
+
+                            document.body.classList.add("page-fade-out");
+
+                            setTimeout(() => {
+                                window.location.href = url.href;
+                            }, 250);
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>
